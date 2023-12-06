@@ -1,14 +1,30 @@
+import { useState } from "react";
+
 function App() {
+  const [isViewIconVisible, setViewIconVisibility] = useState(false);
+
   return (
     <div className="bg-very-dark-blue-main-bg h-screen font-outfit flex justify-center items-center ">
-      <div className="bg-very-dark-blue-card-bg mx-auto w-[90%] sm:w-[24%] p-4 rounded-2xl shadow-2xl space-y-4">
-        <div className="bg-Cyan rounded-xl overflow-hidden relative ">
+      <div className="bg-very-dark-blue-card-bg mx-auto w-80  p-4 rounded-2xl shadow-2xl space-y-4">
+        <div
+          className="bg-Cyan rounded-2xl overflow-hidden relative"
+          onMouseEnter={() => setViewIconVisibility(true)}
+          onMouseLeave={() => setViewIconVisibility(false)}
+        >
+          {/* Main Image */}
           <img
-            className="shadow-xl  hover:mix-blend-multiply hover:opacity-75 hover:cursor-pointer  "
+            className="shadow-xl hover:mix-blend-multiply hover:opacity-75 hover:cursor-pointer  z-10"
             src="../images/image-equilibrium.jpg"
+            alt="Equilibrium Collection"
           />
-
-          <img src="./images/icon-view.svg" className="absolute" />
+          {/* View Icon (Centered, Conditionally Visible) */}
+          {isViewIconVisible && (
+            <img
+              className="absolute left-1/2 bottom-1/3 transform -translate-x-1/2 -translate-y-1/2 opacity-100 transition-opacity duration-300 z-20"
+              src="./images/icon-view.svg"
+              alt="View Icon"
+            />
+          )}
         </div>
         <h1 className="text-xl text-White font-outfit font-semibold  hover:text-Cyan hover:cursor-pointer">
           Equilibrium #3429
